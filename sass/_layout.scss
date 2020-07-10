@@ -7,9 +7,13 @@
 }
 
 .header{
+  font-size: 1.4rem;
   height: 7rem;
   background-color: #fff;
   border-bottom: var(--color-grey-light-2);
+  display: flex; //parent of the search
+  justify-content: space-between;
+  align-items: center;
 
 
 }
@@ -22,9 +26,15 @@
 .sidebar{
   background-color: var(--color-grey-dark-1);
   flex: 0 0 18%; //1) flex-grow -> no growth 2) flex-shrink -> no shrink 3) flex-basis
+  display:flex;
+  flex-direction: column;//Needed to push the copyright to the buttom: reverses the the direction of justify-content (horizontally to vertically) -Y ready to use space between
+  justify-content: space-between;
+
 }
 
 .hotel-view{
+  background-color: #fff;
   background-color: orangered;
+  height: 80rem;
   flex: 1; //elements grows as much as it can in this case 82%
 }

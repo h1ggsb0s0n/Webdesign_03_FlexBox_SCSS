@@ -3,3 +3,5 @@ This Project requires npm
 ->npm run install
 To Compile SASS into CSS: The following command is needed:
 npm run start
+
+Uses sprites via xlink:href -> needs to run on a webserver to run properly
