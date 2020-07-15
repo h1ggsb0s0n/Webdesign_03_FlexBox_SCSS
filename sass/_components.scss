@@ -30,6 +30,7 @@
     transition: all 0.2s;
     margin-right: -3.25rem; //shoves the logo into the Searchbar
 
+// TODO: outlines should never be set to none, style outlines to liking
     &:focus{
       outline: none;
       width: 100%;//goes to 40% of the parent element
@@ -214,4 +215,205 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+}
+
+///////////////////////////////////
+//gallery
+.gallery{
+  display: flex;
+  &__photo{
+    width: 100%;
+    display: block;//image should always to be block or inline block -> avoid small space underneath an imege when left as inline element -> see flex 1
+
+  }
+}
+///////////////////////////////////
+//Hotel
+.overview{
+  display: flex;
+  align-items: center;
+  //justify-content: space-between; does not work because space between is not ditributed evenly
+
+  border-bottom: var(--line);
+
+  &__heading{
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem;
+
+
+  }
+
+  &__stars{
+    margin-right: auto; //solution for the problem with  available space -> everything on the right is automatically calculated
+    //flex: 1; //occupies all the available space - not ideal see background color (larger than stars)-> should be only the size of the content (hovereffect on element would occur on all)
+    //background-color: orangered;
+    display: flex;//svg items behave like inline elements -> so they are not aligned centered (.overview selector)
+
+  }
+
+  &__icon-star,
+  &__icon-location{
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__location{
+    font-size: 1.2rem;
+    display: flex;
+    vertical-align: center;
+  }
+
+  &__icon-location{
+    margin-right: .5rem;
+  }
+
+  &__rating{
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-left: 3rem;
+    padding: 0 2.25rem;
+    align-self: stretch; //occupies all the space it has -> overwrite inheritance from above .overview -> align-items center;
+
+    //used for centering vertically and horizontally:
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__rating-average{
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom:  -3px;
+  }
+
+  &__rating-count{
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+}
+
+///////////////////////////////////
+//Button Inline
+
+.btn-inline{
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit; //Modularity/Reusability Inherits from its parent elements
+  border-bottom: 1px solid currentColor; //same color as text, hover effect: currentColor does not need to be added as well
+  display: inline-block;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover{
+    color: var(--color-grey-dark-1);
+    //border-bottom: 1px solid var(--color-grey-dark-1); not needed because of current color
+  }
+
+  &:focus{
+    outline: none;
+    animation: pulsate 1s infinite;
+  }
+
+}
+
+@keyframes pulsate{
+  0%{
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+  50%{
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0,0,0, .25);
+  }
+
+  100%{
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+
+///////////////////////////////////
+//Paragraph
+
+.paragraph:not(:last-of-type){//last-of-type only applies of the same type (lasat-child -> all children)
+  margin-bottom: 2rem;
+}
+
+///////////////////////////////////
+//list
+
+.list{
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item{
+    flex: 0 0 50%; // two elements side by side -> 50% of flex container
+    margin-bottom: .7rem;
+  }
+
+  &__item::before{
+    content: "";//needed
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: .7rem;
+
+    //Older browsers
+    //background-image: url(../img/chevron-thin-right.svg);//color cannot be altered with background image
+    //background-size:cover;
+
+    //Newer browser = masks -> can be seen through
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+
+  }
+}
+
+
+
+///////////////////////////////////
+//Recommend
+
+.recommend{
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+  display: flex;
+  align-items: center;
+
+
+  &__count{
+    margin-right: auto;
+  }
+
+  &__friends{
+
+  }
+
+
+  &__photo{
+    box-sizing: content-box;//border does add to the element (boxsizeing: border box inherited) (4rem)-> the image gets smaller
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 3px solid #fff;
+
+    &:not(:last-child){
+      margin-right: -1.5rem;
+    }
+  }
 }

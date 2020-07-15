@@ -10,7 +10,8 @@
   font-size: 1.4rem;
   height: 7rem;
   background-color: #fff;
-  border-bottom: var(--color-grey-light-2);
+  border-bottom: var(--line);
+
   display: flex; //parent of the search
   justify-content: space-between;
   align-items: center;
@@ -34,7 +35,30 @@
 
 .hotel-view{
   background-color: #fff;
-  background-color: orangered;
-  height: 80rem;
+  //background-color: orangered;
+
+  //TEST:
+  //height: 80rem;// without content defines the height
   flex: 1; //elements grows as much as it can in this case 82%
+}
+
+.detail{
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--line);
+}
+
+.description{
+  font-size: 1.4rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  flex: 0 0 60%; //no shrink, no grow
+  margin-right: 4.5rem;
+}
+
+.user-reviews{
+  background-color: greenyellow;
+  flex: 1; //remaining space
 }
